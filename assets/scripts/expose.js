@@ -12,6 +12,7 @@ function init() {
   document.getElementById("horn-select").addEventListener('input', function(){
     let typeImg = document.querySelector('img');
     typeImg.src = "assets/images/" + this.value + ".svg";
+    typeImg.alt = this.value;
     document.querySelector('audio').src = "assets/audio/" + this.value + ".mp3";
   });
   document.getElementById("volume").addEventListener('input', function(){
@@ -23,5 +24,6 @@ function init() {
     else if(this.value < 67) level = 2;
     else level = 3;
     volImg.src = "assets/icons/volume-level-" + level.toString() + ".svg";
+    volImg.alt = "volume-level-" + level.toString();
   });
 }
