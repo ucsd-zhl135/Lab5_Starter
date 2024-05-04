@@ -2,14 +2,20 @@
 let synth = window.speechSynthesis;
 window.addEventListener('DOMContentLoaded', init);
 
-function init() {
+
+function addVoices(){
   console.log(synth.getVoices().length);
+  let select = document.getElementById('voice-select');
   for(let voice of synth.getVoices()){
     let option = document.createElement('option');
     option.value = voice.name;
     option.textContent = voice.name;
-    document.getElementById('voice-select').appendChild(option);
+    select.appendChild(option);
   }
+}
+function init() {
+  addVoices();
+  synth.onvoiceschanged = addVoices;
   document.querySelector('button').addEventListener('click',function(){
     let ut = new SpeechSynthesisUtterance(document.querySelector('textarea').value);
     let select = document.querySelector('select');
